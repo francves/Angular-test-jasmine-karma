@@ -9,6 +9,10 @@ export class UsersService {
    constructor(
     private http: Http
   ) {}
+  getAllUsers(){
+    return this.http.get(`${this.path}`, this.makeOptions())
+    .pipe(map(response => response.json()));
+  }
    getUser(id: number): Observable<any>{
     return this.http.get(`${this.path}/${id}`, this.makeOptions())
     .pipe(map( response => response.json()));
